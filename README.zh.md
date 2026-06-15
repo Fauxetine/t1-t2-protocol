@@ -1,6 +1,6 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-green.svg)](https://www.python.org/)
 [![PyPI](https://img.shields.io/pypi/v/t1-t2-protocol.svg)](https://pypi.org/project/t1-t2-protocol/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-2025--03--26-purple.svg)](https://modelcontextprotocol.io/)
 
 # T1/T2 协议 — MCP 异构验证协议
@@ -191,7 +191,7 @@ T1/T2 是面向 [MCP Discussion #2574](https://github.com/modelcontextprotocol/m
 
 ## 许可证
 
-MIT — 详见 [LICENSE](LICENSE)。
+Apache License 2.0 — 详见 [LICENSE](LICENSE)。
 
 ---
 

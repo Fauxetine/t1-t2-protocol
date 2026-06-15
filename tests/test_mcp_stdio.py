@@ -10,7 +10,7 @@ def test_initialize():
     resp = session.call("initialize", {"protocolVersion": "2025-03-26", "capabilities": {}})
     info = resp["result"]["serverInfo"]
     assert info["name"] == "t1-t2-protocol"
-    assert info["version"] == "2.5.3"
+    assert info["version"] == "2.5.4"
     caps = resp["result"]["capabilities"]
     assert "tools" in caps
     assert "sampling" not in caps

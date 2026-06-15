@@ -1,9 +1,10 @@
 [project]
 name = "t1-t2-protocol"
-version = "2.5.3"
+version = "2.5.4"
 description = "Heterogeneous validation protocol for MCP — structured reasoning (T1) + cross-model confidence evaluation (T2) + deterministic checksum"
 readme = "README.md"
-license = {text = "MIT"}
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 requires-python = ">=3.10"
 authors = [
     {name = "Fauxetine"},
@@ -15,7 +16,6 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -47,5 +47,5 @@ testpaths = ["tests"]
 pythonpath = ["src"]
 
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"

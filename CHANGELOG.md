@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.5.4] - 2026-06-15
+
+- Relicense future releases to Apache-2.0 to align with MCP official protocol/infrastructure direction
+- Update PyPI metadata to PEP 639 SPDX license fields
+- Remove PyPI API-token fallback from publish workflow; use Trusted Publishing only
+- Add repository and website metadata to `server.json`
+
 ## [2.5.3] - 2026-06-15
 
 - Fix MCP Registry namespace case (`io.github.Fauxetine/t1-t2-protocol`)
