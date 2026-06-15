@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.fauxetine/t1-t2-protocol",
+  "title": "T1/T2 Protocol",
+  "description": "Heterogeneous validation for MCP — structured reasoning (T1), cross-model evaluation (T2), deterministic checksum. Python stdlib-only.",
+  "version": "2.5.2",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "t1-t2-protocol",
+      "version": "2.5.2",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

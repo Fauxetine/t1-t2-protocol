@@ -1,8 +1,11 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-green.svg)](https://www.python.org/)
+[![PyPI](https://img.shields.io/pypi/v/t1-t2-protocol.svg)](https://pypi.org/project/t1-t2-protocol/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-2025--03--26-purple.svg)](https://modelcontextprotocol.io/)
 
 # T1/T2 Protocol — Heterogeneous Validation for MCP
+
+<!-- mcp-name: io.github.fauxetine/t1-t2-protocol -->
 
 **T1/T2 is an MCP server that makes AI reasoning verifiable, auditable, and trustworthy** — by decomposing ambiguous questions into structured tiers (T1), then validating answers through cross-model evaluation (T2), with a deterministic checksum layer that doesn't depend on any LLM.
 
@@ -29,7 +32,7 @@ T1/T2 introduces **heterogeneous validation**: the model that produces the answe
 
 ### Install
 
-From PyPI (when published):
+From PyPI (recommended):
 
 ```bash
 pip install t1-t2-protocol
@@ -188,15 +191,16 @@ See [examples/](examples/) for step-by-step walkthroughs:
 - [T2: Cross-validate a decision](examples/t2-basic.md)
 - [Full pipeline: T1 → decision → T2](examples/full-pipeline.md)
 
-## Why not existing tools?
+## Positioning
 
-| Tool | Approach | Limitation |
-|------|----------|------------|
-| Sequential Thinking (MCP) | One model thinks step by step | No cross-validation, no structural tiers |
-| Self-reflection / Self-critique | Same model reviews own output | Cannot catch own blind spots |
-| Prompt chains | Multiple prompts in sequence | No standardized protocol, no checksum |
+| Project | Layer | What it does | T1/T2 relationship |
+|---------|-------|--------------|-------------------|
+| [Sequential Thinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking) (official MCP) | Caller-side chain-of-thought | One model logs iterative steps | Complementary — T1 adds L1–L4 tiers + T2 cross-model review |
+| [ThoughtProof](https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/2574) / verdict APIs | Server-side verification | `APPROVE`/`DENY`/`UNCERTAIN` with confidence | Complementary — T1/T2 structures reasoning *before* verdict APIs act |
+| Self-reflection / prompt chains | Same model | Re-reads or re-prompts its own output | Replaced — heterogeneous validation catches shared blind spots |
+| Tool integrity (e.g. Phionyx) | Transport / tool schema | Detects tool poisoning, schema drift | Orthogonal — T1/T2 does not secure tool definitions |
 
-T1/T2 is the only MCP server that provides **heterogeneous validation** — explicitly designed for different models to check each other.
+T1/T2 is a **stdlib reference implementation** for [MCP Discussion #2574](https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/2574)-style reasoning discipline: structure first (T1), cross-validate second (T2), checksum what code can verify. It is not a signed verdict API and not a security scanner.
 
 ## License
 
@@ -211,6 +215,7 @@ MIT — see [LICENSE](LICENSE).
 ## Links
 
 - [Contributing](CONTRIBUTING.md)
+- [MCP Registry](https://registry.modelcontextprotocol.io/)
 - [Security policy](SECURITY.md)
 - [Changelog](CHANGELOG.md)
 - [Design philosophy](docs/philosophy.md)
