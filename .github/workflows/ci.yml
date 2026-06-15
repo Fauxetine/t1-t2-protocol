@@ -26,4 +26,4 @@ jobs:
         T1T2_DISABLE_COUNTERS: "1"
       run: python -m pytest tests/ -v
     - name: Verify console script is registered
-      run: python -c "import importlib.metadata as m; assert m.version('t1-t2-protocol') == '2.5.2'"
+      run: python -c "import importlib.metadata as m; assert m.version('t1-t2-protocol') == '2.5.3'"

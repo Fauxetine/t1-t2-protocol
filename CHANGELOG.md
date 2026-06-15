@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.5.3] - 2026-06-15
+
+- Fix MCP Registry namespace case (`io.github.Fauxetine/t1-t2-protocol`)
+- Sync `mcp-name` marker in README for PyPI ownership verification
+
 ## [2.5.2] - 2026-06-15
 
 - PyPI publish + MCP Registry metadata (`server.json`, `publish.yml`)
