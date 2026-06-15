@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-T1/T2 Protocol MCP Server — v2.5.2
+T1/T2 Protocol MCP Server — v2.5.3
 
 MCP server exposing T1 (structured prompt translation), T2 (confidence evaluation),
 and checksum (structural validation) as standard MCP tools. Compatible with MCP v1.0.
@@ -187,7 +187,7 @@ Recommendation: stop recursive evaluation; treat converged conclusions as final.
 ══════════════════════════════════════════════
 """
 
-VERSION_TAG = "T1/T2 Protocol v2.5.2"
+VERSION_TAG = "T1/T2 Protocol v2.5.3"
 
 
 def normalize_locale(locale: Any) -> str:
