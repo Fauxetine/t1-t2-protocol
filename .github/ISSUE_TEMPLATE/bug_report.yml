@@ -1,0 +1,29 @@
+name: Bug report
+description: Report unexpected MCP tool behavior
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting. Include enough detail to reproduce the JSON-RPC call.
+  - type: input
+    id: client
+    attributes:
+      label: MCP client
+      placeholder: Cursor, Claude Desktop, etc.
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Tool name, arguments, and actual vs expected output
+    validations:
+      required: true

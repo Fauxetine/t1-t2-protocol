@@ -1,0 +1,50 @@
+[project]
+name = "t1-t2-protocol"
+version = "2.5.1"
+description = "Heterogeneous validation protocol for MCP — structured reasoning (T1) + cross-model confidence evaluation (T2) + deterministic checksum"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Neo Reid"},
+]
+keywords = [
+    "mcp", "model-context-protocol", "ai-safety", "llm-validation",
+    "cross-validation", "structured-reasoning", "ai-agent", "heterogeneous",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/Fauxetine/t1-t2-protocol"
+Source = "https://github.com/Fauxetine/t1-t2-protocol"
+Documentation = "https://github.com/Fauxetine/t1-t2-protocol#readme"
+Issues = "https://github.com/Fauxetine/t1-t2-protocol/issues"
+
+[project.scripts]
+t1-t2-protocol = "t1_t2_mcp_server:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools]
+py-modules = ["t1_t2_mcp_server"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
