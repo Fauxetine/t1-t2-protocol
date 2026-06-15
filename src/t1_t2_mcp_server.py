@@ -330,7 +330,7 @@ class T1T2Server:
     def __init__(self):
         self.server_info = {
             "name": "t1-t2-protocol",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "description": (
                 "T1/T2 Protocol: structured prompt translation, "
                 "confidence evaluation, and structural checksum validation "
