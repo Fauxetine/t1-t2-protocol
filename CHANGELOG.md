@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.5.2] - 2026-06-15
+
+- PyPI publish + MCP Registry metadata (`server.json`, `publish.yml`)
+- README positioning vs Sequential Thinking / ThoughtProof / MCP #2574
+- `mcp-name` ownership marker for registry verification
+
 ## [2.5.1] - 2026-06-15
 
 - Open-source release polish: packaging (`package-dir`, `setuptools.build_meta`, `main()` entry point)
