@@ -5,7 +5,7 @@
 
 # T1/T2 Protocol — Heterogeneous Validation for MCP
 
-<!-- mcp-name: io.github.fauxetine/t1-t2-protocol -->
+<!-- mcp-name: io.github.Fauxetine/t1-t2-protocol -->
 
 **T1/T2 is an MCP server that makes AI reasoning verifiable, auditable, and trustworthy** — by decomposing ambiguous questions into structured tiers (T1), then validating answers through cross-model evaluation (T2), with a deterministic checksum layer that doesn't depend on any LLM.
 

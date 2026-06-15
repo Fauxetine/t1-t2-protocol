@@ -5,7 +5,7 @@
 
 # T1/T2 协议 — MCP 异构验证协议
 
-<!-- mcp-name: io.github.fauxetine/t1-t2-protocol -->
+<!-- mcp-name: io.github.Fauxetine/t1-t2-protocol -->
 
 **T1/T2 是一个 MCP 服务器，让 AI 的推理可验证、可审计、可信任** — 通过将模糊问题分解为结构化层级（T1），再通过跨模型评估验证答案（T2），以及一个不依赖任何 LLM 的确定性校验层（checksum）。
 
