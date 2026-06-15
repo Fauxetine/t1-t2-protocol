@@ -38,7 +38,7 @@ pip install t1-t2-protocol
 源码（开发）：
 
 ```bash
-git clone https://github.com/neo-reid/t1-t2-protocol.git
+git clone https://github.com/Fauxetine/t1-t2-protocol.git
 cd t1-t2-protocol
 pip install -e ".[dev]"
 python -m pytest tests/ -v
