@@ -54,4 +54,4 @@ jobs:
 
       - name: Publish to MCP Registry
         if: success()
-        run: ./mcp-publisher publish --dry-run && ./mcp-publisher publish
+        run: ./mcp-publisher publish

@@ -1,0 +1,48 @@
+name: Cleanup Legacy Releases
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Yank erroneous PyPI releases (2.5.2–2.5.4)
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${PYPI_TOKEN:-}" ]; then
+            echo "::warning::PYPI_API_TOKEN not configured; skipping PyPI yank"
+            exit 0
+          fi
+          REASON='Erroneous semver for day-one release; superseded by 0.1.0 (protocol v2.5).'
+          for ver in 2.5.2 2.5.3 2.5.4; do
+            echo "Yanking PyPI ${ver}..."
+            curl -sf -X POST "https://pypi.org/pypi/t1-t2-protocol/${ver}/yank" \
+              -H "Authorization: Bearer ${PYPI_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "{\"reason\":\"${REASON}\"}" \
+              || echo "::warning::PyPI yank ${ver} failed (may already be yanked)"
+          done
+
+      - name: Install MCP Publisher
+        run: |
+          curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+
+      - name: Login to MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Delete erroneous MCP Registry versions
+        run: |
+          SERVER="io.github.Fauxetine/t1-t2-protocol"
+          MSG="Erroneous semver; superseded by package 0.1.0 (protocol v2.5)."
+          for ver in 2.5.3 2.5.4; do
+            echo "Deleting registry ${SERVER} ${ver}..."
+            ./mcp-publisher status --status deleted --message "${MSG}" --yes "${SERVER}" "${ver}" \
+              || echo "::warning::Registry delete ${ver} failed (may already be deleted)"
+          done
