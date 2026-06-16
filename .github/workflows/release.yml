@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Existing tag to publish (e.g. v2.5.4)"
+        description: "Existing tag to publish (e.g. v0.1.0)"
         required: true
-        default: "v2.5.4"
+        default: "v0.1.0"
 
 permissions:
   contents: write
@@ -40,8 +40,8 @@ jobs:
             fi
           } > release-notes.md
           echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
-          if [ "${TAG}" = "v2.5.1" ]; then
-            echo "title=v2.5.1 — Initial Public Release" >> "$GITHUB_OUTPUT"
+          if [ "${TAG}" = "v0.1.0" ]; then
+            echo "title=v0.1.0 — First Public Release" >> "$GITHUB_OUTPUT"
           else
             echo "title=${TAG}" >> "$GITHUB_OUTPUT"
           fi

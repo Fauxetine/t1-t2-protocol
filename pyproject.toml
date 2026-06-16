@@ -1,6 +1,6 @@
 [project]
 name = "t1-t2-protocol"
-version = "2.5.4"
+version = "0.1.0"
 description = "Heterogeneous validation protocol for MCP — structured reasoning (T1) + cross-model confidence evaluation (T2) + deterministic checksum"
 readme = "README.md"
 license = "Apache-2.0"
@@ -14,7 +14,7 @@ keywords = [
     "cross-validation", "structured-reasoning", "ai-agent", "heterogeneous",
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",

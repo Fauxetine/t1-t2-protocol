@@ -4,52 +4,43 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [2.5.4] - 2026-06-15
+## [0.1.0] - 2026-06-16
 
-- Relicense future releases to Apache-2.0 to align with MCP official protocol/infrastructure direction
-- Update PyPI metadata to PEP 639 SPDX license fields
-- Remove PyPI API-token fallback from publish workflow; use Trusted Publishing only
-- Add repository and website metadata to `server.json`
+First public PyPI release under honest pre-1.0 semver (FastAPI/requests pattern).
 
-## [2.5.3] - 2026-06-15
+- Reset **package** version to `0.1.0`; **protocol specification** remains v2.5 (tool output semantics unchanged)
+- Apache-2.0 license, PEP 639 metadata, MCP Registry + PyPI Trusted Publishing
+- Yanked erroneous PyPI releases `2.5.2`–`2.5.4` (incorrect semver for day-one public release)
 
-- Fix MCP Registry namespace case (`io.github.Fauxetine/t1-t2-protocol`)
-- Sync `mcp-name` marker in README for PyPI ownership verification
+### Included capabilities (protocol v2.5)
 
-## [2.5.2] - 2026-06-15
+- T1: structured prompt translation (L1/L2/L3/L4)
+- T2: cross-model confidence evaluation with recursion depth guard
+- `checksum`: deterministic structural pre-validation (stdlib-only)
+- Bilingual templates (`en` / `zh`), weight hints, caller-side web verification docs (v2.6)
 
-- PyPI publish + MCP Registry metadata (`server.json`, `publish.yml`)
-- README positioning vs Sequential Thinking / ThoughtProof / MCP #2574
-- `mcp-name` ownership marker for registry verification
+## Superseded PyPI releases (yanked)
 
-## [2.5.1] - 2026-06-15
+| Version | Reason |
+|---------|--------|
+| 2.5.2–2.5.4 | Erroneous semver; superseded by `0.1.0`. Git tags `v2.5.x` remain as historical tombstones. |
 
-- Open-source release polish: packaging (`package-dir`, `setuptools.build_meta`, `main()` entry point)
-- Default `locale` is now `en`; `zh` remains fully supported
-- English `weight_hint` aliases (`fact-first`, `efficiency-first`, etc.) match README
-- Checksum error messages in English; optional counter via `~/.t1-t2-protocol` (disable in tests with `T1T2_DISABLE_COUNTERS=1`)
-- Docs: caller-side web verification v2.6, `AGENTS.md`, bilingual caller-protocol
-- CI: `pip install -e ".[dev]"` + pytest across Python 3.10–3.12
+## Protocol history (not package semver)
 
-## [2.5.0] - 2026-06-12
+These entries document **protocol specification** evolution, not PyPI package versions.
+
+### Protocol v2.5.0 — 2026-06-12
 
 - Enhanced L3 template with explicit evidence status tracking
-- New tool: `checksum` — deterministic structural pre-validation (zero LLM dependency)
+- New tool: `checksum` — deterministic structural pre-validation
 - Added core link exemption clarification to T1 output requirements
-- Refined tool descriptions for protocol lifecycle (0→1 stage)
 
-## [2.0.0] - 2026-06-12
+### Protocol v2.0.0 — 2026-06-12
 
-- Added evaluation criteria weight assumption preamble to all outputs
-- Added recursion depth detection and automatic termination (depth ≥ 3)
-- Changed confidence from precise percentage to qualitative descriptors (high/medium/low)
-- Added recursion depth label to all T2 outputs
-- Clarified pure T2 vs T2+RAG scope
-- Added version tag in output footer
+- Evaluation criteria weight assumption preamble
+- Recursion depth detection and termination (depth ≥ 3)
+- Qualitative confidence descriptors; version tag in output footer
 
-## [1.0.0] - 2026-06-10
+### Protocol v1.0.0 — 2026-06-10
 
-- Initial release
-- T1: structured prompt translation (L1/L2/L3/L4)
-- T2: confidence evaluation with adoption recommendations
-- stdio MCP transport, stdlib-only
+- Initial T1/T2 tools, stdio MCP transport, stdlib-only

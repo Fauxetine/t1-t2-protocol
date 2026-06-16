@@ -202,6 +202,17 @@ See [examples/](examples/) for step-by-step walkthroughs:
 
 T1/T2 is a **stdlib reference implementation** for [MCP Discussion #2574](https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/2574)-style reasoning discipline: structure first (T1), cross-validate second (T2), checksum what code can verify. It is not a signed verdict API and not a security scanner.
 
+## Versioning
+
+Two version numbers — do not conflate them:
+
+| | Example | Meaning |
+|---|---------|---------|
+| **Package** (PyPI) | `0.1.0` | Distribution lifecycle. `0.x` = experimental ([SemVer](https://semver.org/), [FastAPI policy](https://github.com/fastapi/fastapi/blob/master/docs/en/docs/deployment/versions.md)). |
+| **Protocol** (spec) | `v2.5` | T1/T2 tool semantics in server output footer. Caller-side web verify docs use `v2.6`. |
+
+Recommended install: `pip install "t1-t2-protocol>=0.1.0"`. Erroneous PyPI releases `2.5.2`–`2.5.4` are yanked.
+
 ## License
 
 Apache License 2.0 — see [LICENSE](LICENSE).
