@@ -20,25 +20,15 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.yank_legacy_only == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Mint PyPI API token (Trusted Publishing)
-        id: mint-token
-        run: |
-          set -euo pipefail
-          resp=$(curl -sf -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=pypi")
-          oidc_token=$(jq -r '.value' <<< "${resp}")
-          resp=$(curl -sf -X POST https://pypi.org/_/oidc/mint-token \
-            -H "Content-Type: application/json" \
-            -d "{\"token\": \"${oidc_token}\"}")
-          api_token=$(jq -r '.token' <<< "${resp}")
-          echo "::add-mask::${api_token}"
-          echo "api-token=${api_token}" >> "${GITHUB_OUTPUT}"
-
       - name: Yank erroneous PyPI releases (2.5.2–2.5.4)
         env:
-          PYPI_TOKEN: ${{ steps.mint-token.outputs.api-token }}
+          PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
           set -euo pipefail
+          if [ -z "${PYPI_TOKEN:-}" ]; then
+            echo "::error::PYPI_API_TOKEN secret required (Trusted Publishing is upload-only; yank needs owner API token)."
+            exit 1
+          fi
           REASON='Erroneous semver for day-one release; superseded by 0.1.0 (protocol v2.5).'
           for ver in 2.5.2 2.5.3 2.5.4; do
             echo "Yanking PyPI ${ver}..."
