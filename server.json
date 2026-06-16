@@ -3,7 +3,7 @@
   "name": "io.github.Fauxetine/t1-t2-protocol",
   "title": "T1/T2 Protocol",
   "description": "Caller-side T1/T2 heterogeneous validation MCP server. Stdlib-only Python.",
-  "version": "2.5.4",
+  "version": "0.1.0",
   "websiteUrl": "https://github.com/Fauxetine/t1-t2-protocol",
   "repository": {
     "url": "https://github.com/Fauxetine/t1-t2-protocol",
@@ -13,7 +13,7 @@
     {
       "registryType": "pypi",
       "identifier": "t1-t2-protocol",
-      "version": "2.5.4",
+      "version": "0.1.0",
       "transport": {
         "type": "stdio"
       }
