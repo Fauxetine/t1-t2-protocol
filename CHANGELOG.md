@@ -6,9 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-06-16
+
 ### Changed
 
 - README / docs polish: tool input schemas, Windows config, verification steps, reference disclaimer
+- `t2_protocol` MCP tool description: five-level qualitative confidence (was high/medium/low)
 
 ## [0.1.0] - 2026-06-16
 
