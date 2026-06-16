@@ -26,4 +26,4 @@ This project follows the [Contributor Covenant](CODE_OF_CONDUCT.md). By particip
 
 ## Questions?
 
-Open a GitHub Discussion — issues are for bugs and features.
+Open a GitHub issue with the `question` label (or comment on an existing issue). Use `bug` / `enhancement` labels for actionable reports.

@@ -384,8 +384,8 @@ class T1T2Server:
                 "name": "t2_protocol",
                 "description": (
                     "Confidence evaluation for AI answers. "
-                    "Output: qualitative confidence (high/medium/low) + adoption recommendations. "
-                    "Run checksum before T2 when format integrity matters."
+                    "Output: qualitative confidence (high/medium-high/medium/medium-low/low) "
+                    "+ adoption recommendations. Run checksum before T2 when format integrity matters."
                 ),
                 "inputSchema": {
                     "type": "object",

@@ -18,9 +18,11 @@ The server has **no network access**. If the topic involves time-sensitive facts
 |------|----------|-------|
 | `t1_protocol` | `question`, optional `weight_hint`, `locale` | `locale`: `en` (default) or `zh` |
 | `t2_protocol` | `answer`, optional `weight_hint`, `locale` | Same weights as T1 |
-| `checksum` | `text` | Returns JSON; deterministic, stdlib-only |
+| `checksum` | `text` | Returns JSON (`checksum_passed`, `errors`); deterministic, stdlib-only |
 
 **Weight hints (English or Chinese):** `fact-first` / `事实优先`, `efficiency-first` / `效率优先`, `cost-first` / `成本优先`, `robustness-first` / `鲁棒性优先`, `general-first` / `通用优先`.
+
+> `t1_protocol` and `t2_protocol` return **prompt templates** for the host LLM. Only `checksum` returns structured JSON.
 
 ## Constraints for contributors and agents
 
