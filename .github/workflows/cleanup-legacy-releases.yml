@@ -5,7 +5,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   cleanup:
@@ -17,17 +16,24 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${PYPI_TOKEN:-}" ]; then
-            echo "::warning::PYPI_API_TOKEN not configured; skipping PyPI yank"
-            exit 0
+            echo "::error::PYPI_API_TOKEN secret required for yank (Trusted Publishing tokens are upload-only; yank needs owner API token)."
+            echo "Create at https://pypi.org/manage/account/token/ scoped to t1-t2-protocol, add as repo secret PYPI_API_TOKEN."
+            exit 1
           fi
           REASON='Erroneous semver for day-one release; superseded by 0.1.0 (protocol v2.5).'
           for ver in 2.5.2 2.5.3 2.5.4; do
             echo "Yanking PyPI ${ver}..."
-            curl -sf -X POST "https://pypi.org/pypi/t1-t2-protocol/${ver}/yank" \
-              -H "Authorization: Bearer ${PYPI_TOKEN}" \
+            http_code=$(curl -s -o /tmp/yank-body.txt -w "%{http_code}" \
+              -X PATCH "https://pypi.org/api/projects/t1-t2-protocol/${ver}" \
               -H "Content-Type: application/json" \
-              -d "{\"reason\":\"${REASON}\"}" \
-              || echo "::warning::PyPI yank ${ver} failed (may already be yanked)"
+              -u "__token__:${PYPI_TOKEN}" \
+              -d "{\"yanked\": true, \"yanked_reason\": \"${REASON}\"}")
+            if [ "${http_code}" -ge 200 ] && [ "${http_code}" -lt 300 ]; then
+              echo "Yanked ${ver} (HTTP ${http_code})"
+            else
+              echo "::error::PyPI yank ${ver} failed HTTP ${http_code}: $(cat /tmp/yank-body.txt)"
+              exit 1
+            fi
           done
 
       - name: Install MCP Publisher

@@ -5,13 +5,42 @@ on:
     tags:
       - "v*"
   workflow_dispatch:
+    inputs:
+      yank_legacy_only:
+        description: "Yank erroneous PyPI 2.5.2–2.5.4 only (no publish)"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
   id-token: write
 
 jobs:
+  yank-legacy:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.yank_legacy_only == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Yank erroneous PyPI releases (2.5.2–2.5.4)
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${PYPI_TOKEN:-}" ]; then
+            echo "::error::PYPI_API_TOKEN secret required (Trusted Publishing is upload-only; yank needs owner API token)."
+            exit 1
+          fi
+          REASON='Erroneous semver for day-one release; superseded by 0.1.0 (protocol v2.5).'
+          for ver in 2.5.2 2.5.3 2.5.4; do
+            echo "Yanking PyPI ${ver}..."
+            curl -sf -X PATCH "https://pypi.org/api/projects/t1-t2-protocol/${ver}" \
+              -H "Content-Type: application/json" \
+              -u "__token__:${PYPI_TOKEN}" \
+              -d "{\"yanked\": true, \"yanked_reason\": \"${REASON}\"}"
+            echo "Yanked ${ver}"
+          done
+
   publish:
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.yank_legacy_only != 'true')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
