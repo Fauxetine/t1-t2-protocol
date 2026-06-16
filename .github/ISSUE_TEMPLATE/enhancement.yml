@@ -1,0 +1,21 @@
+name: Enhancement
+description: Suggest a documentation or protocol improvement
+title: "[Enhancement]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Explain the problem and proposed change. T1/T2 stays intentionally minimal — justify new scope.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or gap
+      description: What is missing or unclear today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true

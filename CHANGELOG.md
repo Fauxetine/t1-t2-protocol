@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Changed
+
+- README / docs polish: tool input schemas, Windows config, verification steps, reference disclaimer
+
 ## [0.1.0] - 2026-06-16
 
 First public PyPI release under honest pre-1.0 semver (FastAPI/requests pattern).
